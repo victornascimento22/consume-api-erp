@@ -16,49 +16,19 @@ namespace WebApplication6.Services
 {
     public class LoginRequest
     {
-
-
         private string GetSidFromResponse(HttpResponseMessage response)
         {
-            var httpClientHandler = new HttpClientHandler();
-            var cookieContainer = new CookieContainer();
-            httpClientHandler.CookieContainer = cookieContainer;
-            var cookies1 = cookieContainer.GetCookies(new Uri("https://seu-servidor.com"));
+            var cookies = response.Headers.GetValues("Set-Cookie");
 
-            // Encontra o cookie específico pelo nome
-            var sessionCookie = cookies1["session"];
-
-            if (sessionCookie != null)
+            foreach (var cookie in cookies)
             {
-                // Extrai o valor do ID de sessão do cookie
-                var sessionId = sessionCookie.Value;
-
-                // Armazene o valor do ID de sessão em uma variável para uso posterior
-                // sessionId pode ser armazenado em uma variável, banco de dados, cache, etc.
-            }
-
-            if (response.Headers.TryGetValues("Set-Cookie", out var cookies))
-            {
-                foreach (var cookie in cookies)
+                var cookieParts = cookie.Split(';');
+                var sidCookie = cookieParts.FirstOrDefault(c => c.Trim().StartsWith("sid="));
+                if (!string.IsNullOrEmpty(sidCookie))
                 {
-                    var cookieParts = cookie.Split(';');
-                    var sidCookie = cookieParts.FirstOrDefault(c => c.Trim().StartsWith("sid="));
-                    if (!string.IsNullOrEmpty(sidCookie))
-                    {
-                        var sidValue = sidCookie.Substring("sid=".Length).Trim();
-                        return sidValue;
-                    }
+                    var sidValue = sidCookie.Substring("sid=".Length).Trim();
+                    return sidValue;
                 }
-            }
-
-            return null;
-        }
-
-        private string GetXcnxAuthFromResponse(HttpResponseMessage response)
-        {
-            if (response.Headers.TryGetValues("X-Cnx-Auth", out var values))
-            {
-                return values.FirstOrDefault();
             }
 
             return null;
@@ -75,21 +45,7 @@ namespace WebApplication6.Services
                 var viewModel = new
                 {
                     username = loginReq.Username,
-                    password = loginReq.Password,
-                    mfaToken = loginReq.MfaToken,
-                    sessionToKill = loginReq.SessionToKill,
-                    newPassword = loginReq.NewPassword,
-                    machineID = loginReq.MachineID,
-                    machineName = loginReq.MachineName,
-                    machineUser = loginReq.MachineUser,
-                    killOtherSessions = loginReq.KillOtherSessions,
-                    authDetails = loginReq.AuthDetails,
-                    vldSistema = loginReq.VldSistema,
-                    deviceToken = loginReq.DeviceToken,
-                    notificationToken = loginReq.NotificationToken,
-                    oauthType = loginReq.OauthType,
-                    oauthCode = loginReq.OauthCode,
-                    certs = loginReq.Certs
+                    password = loginReq.Password
                 };
 
                 var json = JsonConvert.SerializeObject(viewModel);
@@ -111,30 +67,13 @@ namespace WebApplication6.Services
                             Path = "/"
                         };
 
-                        if (response.Headers.TryGetValues("Set-Cookie", out var setCookieValues))
-                        {
-                            var setCookieValue = setCookieValues.FirstOrDefault();
-                            if (!string.IsNullOrEmpty(setCookieValue))
-                            {
-                                var setCookieParts = setCookieValue.Split(';');
-                                var cookieValue = setCookieParts[0].Trim().Substring("sid=".Length);
-                                var setCookie = new SetCookieHeaderValue(cookieValue);
-                            }
-
-                            cookieRepository.saveCookie(cookie);
-                        }
-
-                        var xcnxAuth = GetXcnxAuthFromResponse(response);
-
-                        if (!string.IsNullOrEmpty(xcnxAuth))
-                        {
-                            httpClient.DefaultRequestHeaders.Add("X-Cnx-Auth", xcnxAuth);
-                        }
+                        cookieRepository.saveCookie(cookie);
 
                         var resultado = response.Content.ReadAsStringAsync().Result;
                         var obj = JsonConvert.DeserializeObject<LoginRespDTO>(resultado);
                         return obj;
                     }
+
                     else if (response.StatusCode == HttpStatusCode.Unauthorized)
                     {
                         var resultado = response.Content.ReadAsStringAsync().Result;
@@ -144,9 +83,7 @@ namespace WebApplication6.Services
                     else
                     {
                         throw new Exception($"Ocorreu um erro: {response.StatusCode}");
-                        
                     }
-                   
                 }
                 return null;
             }

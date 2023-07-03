@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\WebApplication6",
+    "\\WebApplication6\\DTO",
+    "\\WebApplication6\\DTO\\ListaProcessosDTO",
+    "\\WebApplication6\\Model",
+    "\\WebApplication6\\obj",
+    "\\WebApplication6\\Repositorio",
+    "\\WebApplication6\\Services"
+  ],
+  "SelectedNode": "\\WebApplication6\\Services\\LoginRequest.cs",
+  "PreviewInSolutionExplorer": false
+}

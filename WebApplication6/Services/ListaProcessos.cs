@@ -17,7 +17,7 @@ namespace WebApplication6.Services
             _cookieRepository = cookieRepository;
         }
 
-        public CnxListResponseProcessoDTO ListagemProcessos(string filCod, string usnCod, DateTime? dtaIni, DateTime? dtaFim, string jwtToken)
+        public CnxListResponseProcessoDTO ListagemProcessos(string filCod, string usnCod, DateTime? dtaIni, DateTime? dtaFim)
         {
             if (string.IsNullOrEmpty(filCod) || string.IsNullOrEmpty(usnCod))
             {
@@ -29,13 +29,13 @@ namespace WebApplication6.Services
 
             if (dtaIni.HasValue && dtaFim.HasValue)
             {
-                url = $"https://capital-homologacao.conexos.cloud/api-etl/capital/listagemProcessos?dtaIni={dtaIni.Value}&dtaFim={dtaFim.Value}";
+                url = $"https://capital-homologacao.conexos.cloud/api-etl/capital/listaProcessos";
             }
             else
             {
                 var dataInicio = DateTime.Now.Date.AddDays(-365);
                 var dataFim = DateTime.Now.Date;
-                url = $"https://capital-homologacao.conexos.cloud/api-etl/capital/listagemProcessos?dtaIni={dataInicio}&dtaFim={dataFim}";
+                url = $"https://capital-homologacao.conexos.cloud/api-etl/capital/listaProcessos";
             }
 
             var cookieContainer = new CookieContainer();
@@ -59,7 +59,7 @@ namespace WebApplication6.Services
                 {
                     httpClient.DefaultRequestHeaders.Accept.Clear();
                     httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+                    //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
                     httpClient.DefaultRequestHeaders.Add("Cnx-filCod", filCod);
                     httpClient.DefaultRequestHeaders.Add("Cnx-usnCod", usnCod);
 

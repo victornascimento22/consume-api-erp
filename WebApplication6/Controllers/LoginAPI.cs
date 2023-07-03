@@ -48,16 +48,16 @@ namespace WebApplication6.Controllers
                 
 
                 // Gere o token JWT usando o serviço JwtService
-                var jwtToken = JwtService.GenerateJwtToken(filiais, loginResp.UsnCod);
+                //var jwtToken = JwtService.GenerateJwtToken(filiais, loginResp.UsnCod);
 
-                // Definir o valor do cookie como o token JWT
-                Response.Cookies.Append("AuthToken", jwtToken, new Microsoft.AspNetCore.Http.CookieOptions
-                {
-                    Expires = DateTime.Now.AddDays(7),
-                    HttpOnly = true,
-                    Secure = true,
-                    Path = "/"
-                });
+                //// Definir o valor do cookie como o token JWT
+                //Response.Cookies.Append("AuthToken", jwtToken, new Microsoft.AspNetCore.Http.CookieOptions
+                //{
+                //    Expires = DateTime.Now.AddDays(7),
+                //    HttpOnly = true,
+                //    Secure = true,
+                //    Path = "/"
+                //});
 
                 return Ok(loginResp);
             }

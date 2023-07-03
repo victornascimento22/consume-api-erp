@@ -53,8 +53,9 @@ namespace WebApplication6.Repositories
             try
             {
                 var query = @"SELECT Name, Value, Domain, Path
-                      FROM Cookies
-                      WHERE Id = 26";
+              FROM Cookies
+              WHERE Id = (SELECT MAX(Id) FROM Cookies)";
+
 
                 using (var connection = new SqlConnection(_connection))
                 {
