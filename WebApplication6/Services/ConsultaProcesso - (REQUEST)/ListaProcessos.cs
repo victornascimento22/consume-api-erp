@@ -6,7 +6,7 @@ using System.Net.Http.Headers;
 using WebApplication6.DTO.ListaProcessosDTO;
 using WebApplication6.Repositories;
 
-namespace WebApplication6.Services
+namespace WebApplication6.Services.ConsultaProcesso
 {
     public class ListaProcessos
     {
@@ -44,7 +44,7 @@ namespace WebApplication6.Services
             var cookieDto = _cookieRepository.RecuperarCookie(); // Recupera o cookie do repositório
             if (cookieDto != null)
             {
-                var cookie = new System.Net.Cookie
+                var cookie = new Cookie
                 {
                     Name = cookieDto.Name,
                     Value = cookieDto.Value,

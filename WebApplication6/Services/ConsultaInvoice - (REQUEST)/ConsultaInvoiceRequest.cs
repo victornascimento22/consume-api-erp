@@ -1,26 +1,27 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Net;
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Net;
 using System.Threading.Tasks;
-using WebApplication6.DTO.ProcessoEventosDTO;
+using System;
+using WebApplication6.DTO.ConsultaBL;
 using WebApplication6.Repositories;
+using WebApplication6.DTO.ConsultaInvoice;
 
-namespace WebApplication6.Services
+namespace WebApplication6.Services.ConsultaInvoice
 {
-    public class ProcessoEventosRequest
+    public class ConsultaInvoiceRequest
     {
+
         private readonly CookieRepository _cookieRepository;
 
-        public ProcessoEventosRequest(CookieRepository cookieRepository)
+        public ConsultaInvoiceRequest(CookieRepository cookieRepository)
         {
             _cookieRepository = cookieRepository;
         }
-
-        public async Task<object> ProcessoEvento(string filCod, string usnCod, string refExt)
+        public async Task<object> ConsultaInvoice(string filCod, string usnCod, string refExt)
         {
-            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaEventosProcesso";
+            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaInvoice";
 
             if (string.IsNullOrEmpty(filCod) || string.IsNullOrEmpty(usnCod))
             {
@@ -47,7 +48,6 @@ namespace WebApplication6.Services
             };
 
             cookieContainer.Add(uri, cookie);
-
             using (var httpClient = new HttpClient(new HttpClientHandler { CookieContainer = cookieContainer }))
             {
                 httpClient.DefaultRequestHeaders.Clear();
@@ -64,10 +64,8 @@ namespace WebApplication6.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var obj = JsonConvert.DeserializeObject<CnxListResponseProcessoEventoDTO>(responseContent, new JsonSerializerSettings
-                    {
-                        NullValueHandling = NullValueHandling.Ignore
-                    });
+                    var obj = JsonConvert.DeserializeObject<CnxListResponseInvoiceDTO>(responseContent);
+
                     return obj;
                 }
                 else if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -79,7 +77,9 @@ namespace WebApplication6.Services
                     Console.WriteLine($"Ocorreu um erro: {response.StatusCode}");
                     return null;
                 }
+
             }
         }
     }
 }
+

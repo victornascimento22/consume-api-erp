@@ -3,7 +3,7 @@ using WebApplication6.DTO.ListaProcessosDTO;
 
 namespace WebApplication6.DTO.ProcessoEventosDTO
 {
-    public class CnxListResponseProcessoEventoDTO
+    public class CnxListResponseProcessoEventosDTO
     {
         public long Count { get; set; }
         public long PageNumber { get; set; }

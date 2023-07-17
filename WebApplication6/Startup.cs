@@ -18,6 +18,10 @@ using WebApplication6;
 using WebApplication6.Model;
 using WebApplication6.Repositories;
 using WebApplication6.Services;
+using WebApplication6.Services.ConsultaBL;
+using WebApplication6.Services.ConsultaInvoice;
+using WebApplication6.Services.ConsultaProcesso;
+using WebApplication6.Services.ConsultaProdutos;
 using static Dapper.SqlMapper;
 
 namespace WebApplication6
@@ -44,9 +48,16 @@ namespace WebApplication6
             services.AddScoped<ListaProcessos>();
             services.AddScoped<ProcessoEventosRequest>();
             services.AddScoped<ProcessosResumoRequest>();
-
-            // Comentado
+            services.AddScoped<ConsultaBLRequest>();
+            services.AddScoped<ConsultaBLContainersRequest>();
+            services.AddScoped<ConsultaCERequest>();
+            services.AddScoped<ListaProdutosRequest>();
+            services.AddScoped<ConsultaProdutosRequest>();
             services.AddScoped<CookieRepository>();
+            services.AddScoped<ConsultaInvoiceRequest>();
+            services.AddScoped<ConsultaItensInvoiceRequest>();
+            services.AddScoped<ConsultaDIRequest>();
+            services.AddScoped<ConsultaNFSRequest>();
             // services.AddHttpContextAccessor();
             // services.AddCors();
             // KEY.Secret = Guid.NewGuid();

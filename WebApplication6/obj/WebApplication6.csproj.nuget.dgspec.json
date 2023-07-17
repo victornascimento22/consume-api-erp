@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\victor.viana\\source\\repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj": {}
+    "C:\\Users\\victor.viana\\Source\\Repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj": {}
   },
   "projects": {
-    "C:\\Users\\victor.viana\\source\\repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj": {
+    "C:\\Users\\victor.viana\\Source\\Repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\victor.viana\\source\\repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj",
+        "projectUniqueName": "C:\\Users\\victor.viana\\Source\\Repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj",
         "projectName": "WebApplication6",
-        "projectPath": "C:\\Users\\victor.viana\\source\\repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj",
+        "projectPath": "C:\\Users\\victor.viana\\Source\\Repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj",
         "packagesPath": "C:\\Users\\victor.viana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\victor.viana\\source\\repos\\victornascimento22\\extractapi\\WebApplication6\\obj\\",
+        "outputPath": "C:\\Users\\victor.viana\\Source\\Repos\\victornascimento22\\extractapi\\WebApplication6\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\victor.viana\\AppData\\Roaming\\NuGet\\NuGet.Config",

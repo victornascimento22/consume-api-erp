@@ -1,27 +1,27 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http;
-using System.Text.RegularExpressions;
+using System.Net;
 using System.Threading.Tasks;
-using WebApplication6.DTO.ProcessoEventosDTO;
+using System;
+using WebApplication6.DTO.ConsultaDIDTO;
 using WebApplication6.Repositories;
+using WebApplication6.DTO;
 
 namespace WebApplication6.Services
 {
-    public class ProcessosResumoRequest
+    public class ConsultaNFSRequest
     {
         private readonly CookieRepository _cookieRepository;
-        public ProcessosResumoRequest(CookieRepository cookieRepository)
+
+        public ConsultaNFSRequest(CookieRepository cookieRepository)
         {
             _cookieRepository = cookieRepository;
         }
 
-        public async Task<object> ProcessoResumo(string filCod, string usnCod, string refExt)
+        public async Task<object> ConsultaNF(string filCod, string usnCod, string refExt)
         {
-
-            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaResumoProcesso";
+            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaNotasSaida";
 
             if (string.IsNullOrEmpty(filCod) || string.IsNullOrEmpty(usnCod))
             {
@@ -48,6 +48,7 @@ namespace WebApplication6.Services
             };
 
             cookieContainer.Add(uri, cookie);
+
             using (var httpClient = new HttpClient(new HttpClientHandler { CookieContainer = cookieContainer }))
             {
                 httpClient.DefaultRequestHeaders.Clear();
@@ -56,7 +57,7 @@ namespace WebApplication6.Services
                 httpClient.DefaultRequestHeaders.Add("Cnx-filCod", filCod);
                 httpClient.DefaultRequestHeaders.Add("Cnx-usnCod", usnCod);
 
-                var queryParams = $"?refExt={refExt}&filCod={filCod}";
+                var queryParams = $"?filCod={filCod}&refExt={refExt}";
                 var requestUrl = url + queryParams;
 
                 var response = await httpClient.GetAsync(requestUrl);
@@ -64,10 +65,7 @@ namespace WebApplication6.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var obj = JsonConvert.DeserializeObject<CnxListResponseProcessoEventoDTO>(responseContent, new JsonSerializerSettings
-                    {
-                        NullValueHandling = NullValueHandling.Ignore
-                    });
+                    var obj = JsonConvert.DeserializeObject<NotaFiscalSaidaDTO>(responseContent);
                     return obj;
                 }
                 else if (response.StatusCode == HttpStatusCode.Unauthorized)

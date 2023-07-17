@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication6.Services;
+using WebApplication6.Services.ConsultaProcesso;
 
-namespace WebApplication6.Controllers
+namespace WebApplication6.Controllers.ConsultaProcessos
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -22,8 +22,8 @@ namespace WebApplication6.Controllers
             try
             {
                 var refExtHeader = Request.Headers["refExt"].ToString();
-                var filCodHeader= Request.Headers["CNXFIL-COD"].ToString();
-                var usnCodHeader= Request.Headers["CNXUSN-COD"].ToString();
+                var filCodHeader = Request.Headers["CNXFIL-COD"].ToString();
+                var usnCodHeader = Request.Headers["CNXUSN-COD"].ToString();
                 var result = await _processoEventosRequest.ProcessoEvento(filCodHeader, usnCodHeader, refExtHeader);
                 return Ok(result);
             }

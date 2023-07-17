@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\WebApplication6",
+    "\\WebApplication6\\Controllers",
+    "\\WebApplication6\\Controllers\\ConsultaProcessos",
+    "\\WebApplication6\\Controllers\\ConsultaProdutos",
     "\\WebApplication6\\DTO",
-    "\\WebApplication6\\DTO\\ListaProcessosDTO",
-    "\\WebApplication6\\Model",
-    "\\WebApplication6\\obj",
+    "\\WebApplication6\\DTO\\ConsultaDIDTO",
     "\\WebApplication6\\Repositorio",
-    "\\WebApplication6\\Services"
+    "\\WebApplication6\\Services",
+    "\\WebApplication6\\Services\\ConsultaBL - (REQUEST)"
   ],
-  "SelectedNode": "\\WebApplication6\\Services\\LoginRequest.cs",
+  "SelectedNode": "\\WebApplication6\\Services\\ConsultaNFSRequest.cs",
   "PreviewInSolutionExplorer": false
 }

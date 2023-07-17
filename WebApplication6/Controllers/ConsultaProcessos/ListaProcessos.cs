@@ -5,9 +5,9 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using WebApplication6.DTO.LoginDTO;
-using WebApplication6.Services;
+using WebApplication6.Services.ConsultaProcesso;
 
-namespace WebApplication6.Controllers
+namespace WebApplication6.Controllers.ConsultaProcessos
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -36,7 +36,7 @@ namespace WebApplication6.Controllers
             //var userIdClaim = User.FindFirst("UsuarioCodigo");
             //var filialClaims = User.FindAll("FilialCodigo");
 
-            //if (userIdClaim == null)
+            //if (userIdClaim == null)ListagemProcessos/ListaProcessos
             //{
             //    return BadRequest("Credenciais inválidas");
             //}

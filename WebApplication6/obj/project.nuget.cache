@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y25oiCHJdIQtJ3UEdJtg4Ctx5QuNNDO0MhsHEb7kSpyd62P5aCj6HVggusKl5cuSw+x18mCQeu39FdHvw60s2g==",
+  "dgSpecHash": "pFhcdQN4iH2+0Xs2PVDshHPDczTM0ViwE7oCTmhgtrnQ9HnpL4in3wP57FbRmcuWavadHVF/BkXRfx316qV0gQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\victor.viana\\source\\repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj",
+  "projectFilePath": "C:\\Users\\victor.viana\\Source\\Repos\\victornascimento22\\extractapi\\WebApplication6\\WebApplication6.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victor.viana\\.nuget\\packages\\dapper\\2.0.138\\dapper.2.0.138.nupkg.sha512",
     "C:\\Users\\victor.viana\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.32\\microsoft.aspnetcore.authentication.jwtbearer.3.1.32.nupkg.sha512",
