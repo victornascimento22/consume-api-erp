@@ -4,24 +4,23 @@ using System.Net.Http;
 using System.Net;
 using System.Threading.Tasks;
 using System;
-using WebApplication6.DTO.ConsultaDIDTO;
-using WebApplication6.Repositories;
 using WebApplication6.DTO;
+using WebApplication6.Repositories;
 
 namespace WebApplication6.Services
 {
-    public class ConsultaNFSRequest
+    public class ConsultaImpostosNFRequest
     {
         private readonly CookieRepository _cookieRepository;
 
-        public ConsultaNFSRequest(CookieRepository cookieRepository)
+        public ConsultaImpostosNFRequest(CookieRepository cookieRepository)
         {
             _cookieRepository = cookieRepository;
         }
 
-        public async Task<object> ConsultaNF(string filCod, string usnCod, string refExt)
+        public async Task<object> ConsultaImpostosNF(string filCod, string usnCod, string docCod)
         {
-            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaNotasSaida";
+            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaImpostosNotaSaida";
 
             if (string.IsNullOrEmpty(filCod) || string.IsNullOrEmpty(usnCod))
             {
@@ -57,7 +56,7 @@ namespace WebApplication6.Services
                 httpClient.DefaultRequestHeaders.Add("Cnx-filCod", filCod);
                 httpClient.DefaultRequestHeaders.Add("Cnx-usnCod", usnCod);
 
-                var queryParams = $"?filCod={filCod}&refExt={refExt}";
+                var queryParams = $"?filCod={filCod}&docCod={docCod}";
                 var requestUrl = url + queryParams;
 
                 var response = await httpClient.GetAsync(requestUrl);
@@ -65,7 +64,7 @@ namespace WebApplication6.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var obj = JsonConvert.DeserializeObject<CnxListResponseNumeroNfSaidaDTO>(responseContent);
+                    var obj = JsonConvert.DeserializeObject<CnxListResponseProdutoImpostoNfSaidaDTO>(responseContent);
                     return obj;
                 }
                 else if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -81,3 +80,6 @@ namespace WebApplication6.Services
         }
     }
 }
+
+
+

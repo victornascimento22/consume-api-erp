@@ -2,28 +2,28 @@
 using System.Threading.Tasks;
 using WebApplication6.Services;
 
-namespace WebApplication6.Controllers
+namespace WebApplication6.Controllers.ConsultaNF
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ConsultaNFS : Controller
+    public class ConsultaNotaSaidaController : ControllerBase
     {
         private readonly ConsultaNFSRequest _consultaNFS;
 
-        public ConsultaNFS(ConsultaNFSRequest consultaNFSRequest)
+        public ConsultaNotaSaidaController(ConsultaNFSRequest consultaNFSRequest)
         {
 
             _consultaNFS = consultaNFSRequest;
 
         }
-        [HttpGet("ConsultaNF")]
-        public async Task<IActionResult> ConsultaNF() 
+        [HttpGet("ConsultaNotaSaida")]
+        public async Task<IActionResult> ConsultaNF()
         {
             var refExtHeader = Request.Headers["refExt"].ToString();
             var filCodHeader = Request.Headers["CNXFIL-COD"].ToString();
             var usnCodHeader = Request.Headers["CNXUSN-COD"].ToString();
             var resultado = await _consultaNFS.ConsultaNF(filCodHeader, usnCodHeader, refExtHeader);
-            return Ok();
+            return Ok(resultado);
         }
     }
 }

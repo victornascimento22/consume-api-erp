@@ -21,7 +21,7 @@
     }
     public class NfeDTO
     {
-        [JsonProperty]
+        [JsonProperty("fdnEspId")]
         public string? fdnEspId { get; set; }
 
 
@@ -174,13 +174,13 @@
         public string? Obs { get; set; }
 
         [JsonProperty("docDtaEmissao")]
-        public DateTime? DocDtaEmissao { get; set; }
+        public string? DocDtaEmissao { get; set; }
 
         [JsonProperty("nfeDTOList")]
-        public List<NfeDTO>? NfeDTOList { get; set; }
+        public List<NfeDTO> NfeDTOList { get; set; }
 
         [JsonProperty("volumesNfDTOList")]
-        public List<VolumesNfDTO>? VolumesNfDTOList { get; set; }
+        public List<VolumesNfDTO> VolumesNfDTOList { get; set; }
     }
 
 }

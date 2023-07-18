@@ -23,6 +23,7 @@ using WebApplication6.Services.ConsultaInvoice;
 using WebApplication6.Services.ConsultaProcesso;
 using WebApplication6.Services.ConsultaProdutos;
 using static Dapper.SqlMapper;
+using static WebApplication6.Services.FinanceiroAPagarRequest;
 
 namespace WebApplication6
 {
@@ -58,6 +59,10 @@ namespace WebApplication6
             services.AddScoped<ConsultaItensInvoiceRequest>();
             services.AddScoped<ConsultaDIRequest>();
             services.AddScoped<ConsultaNFSRequest>();
+            services.AddScoped<ConsultaItensNFRequest>();
+            services.AddScoped<ConsultaImpostosNFRequest>();
+            services.AddScoped<ConsultaNFERequest>();
+            services.AddScoped<ConsultaFinanceiroAPagarRequest>();
             // services.AddHttpContextAccessor();
             // services.AddCors();
             // KEY.Secret = Guid.NewGuid();

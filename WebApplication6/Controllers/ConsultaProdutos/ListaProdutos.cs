@@ -6,11 +6,11 @@ namespace WebApplication6.Controllers.ConsultaProdutos
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ListaProdutos : Controller
+    public class ListaProdutosController : Controller
     {
 
         private readonly ListaProdutosRequest _listaprodutos;
-        public ListaProdutos(ListaProdutosRequest listaprodutos)
+        public ListaProdutosController(ListaProdutosRequest listaprodutos)
         {
 
             _listaprodutos = listaprodutos;

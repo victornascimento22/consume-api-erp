@@ -10,18 +10,18 @@ using WebApplication6.DTO;
 
 namespace WebApplication6.Services
 {
-    public class ConsultaNFSRequest
+    public class ConsultaNFERequest
     {
         private readonly CookieRepository _cookieRepository;
 
-        public ConsultaNFSRequest(CookieRepository cookieRepository)
+        public ConsultaNFERequest(CookieRepository cookieRepository)
         {
             _cookieRepository = cookieRepository;
         }
 
-        public async Task<object> ConsultaNF(string filCod, string usnCod, string refExt)
+        public async Task<object> ConsultaNFE(string filCod, string usnCod, string refExt)
         {
-            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaNotasSaida";
+            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaNotasEntrada";
 
             if (string.IsNullOrEmpty(filCod) || string.IsNullOrEmpty(usnCod))
             {
@@ -65,7 +65,7 @@ namespace WebApplication6.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var obj = JsonConvert.DeserializeObject<CnxListResponseNumeroNfSaidaDTO>(responseContent);
+                    var obj = JsonConvert.DeserializeObject<CnxListResponseNumeroNfEntradaDTO>(responseContent);
                     return obj;
                 }
                 else if (response.StatusCode == HttpStatusCode.Unauthorized)
