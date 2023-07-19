@@ -3,16 +3,16 @@ using System;
 using Newtonsoft.Json;
 using WebApplication6.DTO.ListaProcessosDTO;
 
-namespace WebApplication6.DTO
+namespace WebApplication6.DTO.FinanceiroDTO
 {
     public class FinanceiroAReceberDTO
     {
         [JsonProperty]
         public long? docCod { get; set; }
         [JsonProperty]
-        public string? docDtaEmissao { get; set; }
+        public string docDtaEmissao { get; set; }
         [JsonProperty]
-        public string? docDtaMovimento { get; set; }
+        public string docDtaMovimento { get; set; }
         [JsonProperty]
         public string gerDes { get; set; }
         [JsonProperty]
@@ -43,28 +43,28 @@ namespace WebApplication6.DTO
         public long? prjCod { get; set; }
 
         [JsonProperty("ctpDesNome")]
-        public string? ctpDesNome { get; set; }
+        public string ctpDesNome { get; set; }
 
         [JsonProperty("ccuEspConta")]
-        public string? ccuEspConta { get; set; }
+        public string ccuEspConta { get; set; }
 
         [JsonProperty("ccuDesNome")]
-        public string? ccuDesNome { get; set; }
+        public string ccuDesNome { get; set; }
 
         [JsonProperty("priCodProd")]
         public long? priCodProd { get; set; }
 
         [JsonProperty("ungDesNome")]
-        public string? ungDesNome { get; set; }
+        public string ungDesNome { get; set; }
     }
 
     public class FinanceiroAReceberTitulosDTO
     {
         [JsonProperty("titEspNum")]
-        public string? titEspNum { get; set; }
+        public string titEspNum { get; set; }
 
         [JsonProperty("titDtaVenc")]
-        public string? titDtaVenc { get; set; }
+        public string titDtaVenc { get; set; }
 
         [JsonProperty("titMnyTotPag")]
         public decimal? titMnyTotPag { get; set; }
@@ -82,7 +82,7 @@ namespace WebApplication6.DTO
         public CnxResponseSummaryDTO summary { get; set; }
 
         [JsonProperty("rows")]
-        public List<FinanceiroAReceberDTO>? rows { get; set; }
+        public List<FinanceiroAReceberDTO> rows { get; set; }
     }
 
 

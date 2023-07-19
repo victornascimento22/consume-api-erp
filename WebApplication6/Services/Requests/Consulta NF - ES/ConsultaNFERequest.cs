@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 using System;
 using WebApplication6.DTO.ConsultaDIDTO;
 using WebApplication6.Repositories;
-using WebApplication6.DTO;
+using WebApplication6.DTO.NFEntradaDTO;
 
 namespace WebApplication6.Services
 {
-    public class ConsultaItensNFRequest
+    public class ConsultaNFERequest
     {
         private readonly CookieRepository _cookieRepository;
 
-        public ConsultaItensNFRequest(CookieRepository cookieRepository)
+        public ConsultaNFERequest(CookieRepository cookieRepository)
         {
             _cookieRepository = cookieRepository;
         }
 
-        public async Task<object> ConsultaItensNF(string filCod, string usnCod, string docCod)
+        public async Task<object> ConsultaNFE(string filCod, string usnCod, string refExt)
         {
-            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaItensNotaSaida";
+            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaNotasEntrada";
 
             if (string.IsNullOrEmpty(filCod) || string.IsNullOrEmpty(usnCod))
             {
@@ -57,7 +57,7 @@ namespace WebApplication6.Services
                 httpClient.DefaultRequestHeaders.Add("Cnx-filCod", filCod);
                 httpClient.DefaultRequestHeaders.Add("Cnx-usnCod", usnCod);
 
-                var queryParams = $"?filCod={filCod}&docCod={docCod}";
+                var queryParams = $"?filCod={filCod}&refExt={refExt}";
                 var requestUrl = url + queryParams;
 
                 var response = await httpClient.GetAsync(requestUrl);
@@ -65,7 +65,7 @@ namespace WebApplication6.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var obj = JsonConvert.DeserializeObject<CnxListResponseItensNFSaidaDTO>(responseContent);
+                    var obj = JsonConvert.DeserializeObject<CnxListResponseNumeroNfEntradaDTO>(responseContent);
                     return obj;
                 }
                 else if (response.StatusCode == HttpStatusCode.Unauthorized)

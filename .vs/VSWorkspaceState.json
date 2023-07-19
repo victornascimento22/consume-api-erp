@@ -2,16 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\WebApplication6",
-    "\\WebApplication6\\Controllers",
-    "\\WebApplication6\\Controllers\\ConsultaInvoice",
-    "\\WebApplication6\\Controllers\\ConsultaNF",
-    "\\WebApplication6\\Controllers\\ConsultaProdutos",
     "\\WebApplication6\\DTO",
-    "\\WebApplication6\\DTO\\ConsultaBLDTO",
-    "\\WebApplication6\\DTO\\ProcessoEventosDTO",
+    "\\WebApplication6\\DTO\\NFSaidaDTO",
+    "\\WebApplication6\\obj",
     "\\WebApplication6\\Services",
-    "\\WebApplication6\\Services\\ConsultaBL - (REQUEST)"
+    "\\WebApplication6\\Services\\Requests",
+    "\\WebApplication6\\Services\\Requests\\Consulta NF - ES",
+    "\\WebApplication6\\Services\\Requests\\ConsultaFinanceiro",
+    "\\WebApplication6\\Services\\Requests\\Login"
   ],
-  "SelectedNode": "\\WebApplication6\\Controllers\\ConsultaFinanceiroaPagarController.cs",
+  "SelectedNode": "\\WebApplication6\\Services\\Requests\\Login\\LoginRequest.cs",
   "PreviewInSolutionExplorer": false
 }

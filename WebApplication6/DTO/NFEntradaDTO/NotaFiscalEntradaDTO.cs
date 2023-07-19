@@ -2,13 +2,13 @@
 using System;
 using WebApplication6.DTO.ListaProcessosDTO;
 
-namespace WebApplication6.DTO
+namespace WebApplication6.DTO.NFEntradaDTO
 {
     public class NotaFiscalEntradaDTO
     {
         public long? docCod { get; set; }
-        public string? docDtaEmissao { get; set; }
-        public string? docDtaMovimento { get; set; }
+        public string docDtaEmissao { get; set; }
+        public string docDtaMovimento { get; set; }
         public string dpeNomPessoa { get; set; }
         public decimal? docMnyValor { get; set; }
         public List<ItensNfEntradaDTO> itensNfEntradaDTOList { get; set; }

@@ -4,23 +4,24 @@ using System.Net.Http;
 using System.Net;
 using System.Threading.Tasks;
 using System;
-using WebApplication6.DTO;
+using WebApplication6.DTO.ConsultaDIDTO;
 using WebApplication6.Repositories;
+using WebApplication6.DTO.NFSaidaDTO;
 
 namespace WebApplication6.Services
 {
-    public class ConsultaImpostosNFRequest
+    public class ConsultaItensNFRequest
     {
         private readonly CookieRepository _cookieRepository;
 
-        public ConsultaImpostosNFRequest(CookieRepository cookieRepository)
+        public ConsultaItensNFRequest(CookieRepository cookieRepository)
         {
             _cookieRepository = cookieRepository;
         }
 
-        public async Task<object> ConsultaImpostosNF(string filCod, string usnCod, string docCod)
+        public async Task<object> ConsultaItensNF(string filCod, string usnCod, string docCod)
         {
-            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaImpostosNotaSaida";
+            var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaItensNotaSaida";
 
             if (string.IsNullOrEmpty(filCod) || string.IsNullOrEmpty(usnCod))
             {
@@ -64,7 +65,7 @@ namespace WebApplication6.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var obj = JsonConvert.DeserializeObject<CnxListResponseProdutoImpostoNfSaidaDTO>(responseContent);
+                    var obj = JsonConvert.DeserializeObject<CnxListResponseItensNFSaidaDTO>(responseContent);
                     return obj;
                 }
                 else if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -80,6 +81,3 @@ namespace WebApplication6.Services
         }
     }
 }
-
-
-

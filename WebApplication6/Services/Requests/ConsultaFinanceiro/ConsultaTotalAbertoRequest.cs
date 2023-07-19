@@ -4,25 +4,23 @@ using System.Net.Http;
 using System.Net;
 using System.Threading.Tasks;
 using System;
-using WebApplication6.DTO;
 using WebApplication6.Repositories;
+using WebApplication6.DTO.FinanceiroDTO;
 
 namespace WebApplication6.Services
 {
-    public class FinanceiroAPagarRequest
-    {
-        public class ConsultaFinanceiroAPagarRequest
+    public class ConsultaTotalAbertoRequest
         {
             private readonly CookieRepository _cookieRepository;
 
-            public ConsultaFinanceiroAPagarRequest(CookieRepository cookieRepository)
+            public ConsultaTotalAbertoRequest(CookieRepository cookieRepository)
             {
                 _cookieRepository = cookieRepository;
             }
 
-            public async Task<object> ConsultaFinanceiroAPagar(string filCod, string usnCod, string refExt)
+            public async Task<object> ConsultaTotalAberto(string filCod, string usnCod, string refExt)
             {
-                var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaNotasEntrada";
+                var url = "https://capital-homologacao.conexos.cloud/api-etl/capital/consultaTotalAberto";
 
                 if (string.IsNullOrEmpty(filCod) || string.IsNullOrEmpty(usnCod))
                 {
@@ -66,7 +64,7 @@ namespace WebApplication6.Services
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var obj = JsonConvert.DeserializeObject<CnxListResponseFinanceiroAPagarDTO>(responseContent);
+                        var obj = JsonConvert.DeserializeObject<ConsultaTotalAbertoDTO>(responseContent);
                         return obj;
                     }
                     else if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -82,5 +80,3 @@ namespace WebApplication6.Services
             }
         }
     }
-}
-

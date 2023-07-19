@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using WebApplication6.DTO.ListaProcessosDTO;
 
-namespace WebApplication6.DTO
+namespace WebApplication6.DTO.NFSaidaDTO
 {
     public class CnxListResponseItensNFSaidaDTO
     {

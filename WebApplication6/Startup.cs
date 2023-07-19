@@ -19,12 +19,14 @@ using WebApplication6.Model;
 using WebApplication6.Repositories;
 using WebApplication6.Services;
 using WebApplication6.Services.ConsultaBL;
+using WebApplication6.Services.ConsultaFinanceiro;
 using WebApplication6.Services.ConsultaInvoice;
 using WebApplication6.Services.ConsultaProcesso;
 using WebApplication6.Services.ConsultaProdutos;
+using WebApplication6.Services.Loign;
 using static Dapper.SqlMapper;
-using static WebApplication6.Services.FinanceiroAPagarRequest;
-using static WebApplication6.Services.FinanceiroAReceberRequest;
+using static WebApplication6.Services.ConsultaFinanceiro.FinanceiroAPagarRequest;
+using static WebApplication6.Services.ConsultaFinanceiro.FinanceiroAReceberRequest;
 
 namespace WebApplication6
 {
@@ -66,6 +68,7 @@ namespace WebApplication6
             services.AddScoped<ConsultaFinanceiroAPagarRequest>();
             services.AddScoped<ConsultaFinanceiroAReceberRequest>();
             services.AddScoped<ConsultaAvisoLancamentoRequest>();
+            services.AddScoped<ConsultaTotalAbertoRequest>();
             // services.AddHttpContextAccessor();
             // services.AddCors();
             // KEY.Secret = Guid.NewGuid();

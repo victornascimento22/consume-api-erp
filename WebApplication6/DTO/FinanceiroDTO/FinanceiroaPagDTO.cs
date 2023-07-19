@@ -2,13 +2,13 @@
 using System;
 using WebApplication6.DTO.ListaProcessosDTO;
 
-namespace WebApplication6.DTO
+namespace WebApplication6.DTO.FinanceiroDTO
 {
     public class FinanceiroAPagDTO
     {
         public long? docCod { get; set; }
-        public string? docDtaEmissao { get; set; }
-        public string? docDtaMovimento { get; set; }
+        public string docDtaEmissao { get; set; }
+        public string docDtaMovimento { get; set; }
         public string gerDes { get; set; }
         public decimal? docMnyValor { get; set; }
         public decimal? mnyPis { get; set; }
@@ -35,7 +35,7 @@ namespace WebApplication6.DTO
     public class FinanceiroAPagarTitulosDTO
     {
         public string titEspNum { get; set; }
-        public string? titDtaVenc { get; set; }
+        public string titDtaVenc { get; set; }
         public decimal? titMnyTotPag { get; set; }
     }
 

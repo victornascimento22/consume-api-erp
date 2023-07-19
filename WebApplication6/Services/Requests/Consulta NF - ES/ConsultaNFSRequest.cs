@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System;
 using WebApplication6.DTO.ConsultaDIDTO;
 using WebApplication6.Repositories;
-using WebApplication6.DTO;
+using WebApplication6.DTO.NFSaidaDTO;
 
 namespace WebApplication6.Services
 {

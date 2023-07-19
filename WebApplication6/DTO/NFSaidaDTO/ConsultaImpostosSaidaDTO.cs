@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using WebApplication6.DTO.ListaProcessosDTO;
 
-namespace WebApplication6.DTO
+namespace WebApplication6.DTO.NFSaidaDTO
 {
     public class ProdutoImpostoNfSaidaDTO
     {
@@ -19,7 +19,7 @@ namespace WebApplication6.DTO
         public int? DtrNumOrdem { get; set; }
 
         [JsonProperty("impDesNome")]
-        public string? ImpDesNome { get; set; }
+        public string ImpDesNome { get; set; }
 
         [JsonProperty("dtrPctAliquota")]
         public decimal? DtrPctAliquota { get; set; }
